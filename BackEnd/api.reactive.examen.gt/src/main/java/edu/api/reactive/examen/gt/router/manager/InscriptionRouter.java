@@ -46,13 +46,13 @@ public class InscriptionRouter {
 									@ApiResponse(responseCode = HTTP_CODE_204, description = HTTP_MSG_204) }, description = "Search Inscription By Id", summary = "Search Inscription By Id")),
 
 			@RouterOperation(path = API_ROUTE_INSCRIPTION
-					+ "/{name}", method = RequestMethod.GET, beanClass = InscriptionHandler.class, beanMethod = "findByNameLike", operation = @Operation(operationId = "findByNameLike", parameters = {
+					+ "/byname/{name}", method = RequestMethod.GET, beanClass = InscriptionHandler.class, beanMethod = "findByNameLike", operation = @Operation(operationId = "findByNameLike", parameters = {
 							@Parameter(in = ParameterIn.PATH, name = "name", description = "name of Inscription") }, responses = {
 									@ApiResponse(responseCode = HTTP_CODE_200, description = HTTP_MSG_200, content = @Content(schema = @Schema(implementation = Inscription.class))),
 									@ApiResponse(responseCode = HTTP_CODE_204, description = HTTP_MSG_204) }, description = "Search Inscription By Name", summary = "Search Inscription By Name")),
 
 			@RouterOperation(path = API_ROUTE_INSCRIPTION
-					+ "/{situationcode}", method = RequestMethod.GET, beanClass = InscriptionHandler.class, beanMethod = "findBySituationcode", operation = @Operation(operationId = "findBySituationcode", parameters = {
+					+ "/bysituationcode/{situationcode}", method = RequestMethod.GET, beanClass = InscriptionHandler.class, beanMethod = "findBySituationcode", operation = @Operation(operationId = "findBySituationcode", parameters = {
 							@Parameter(in = ParameterIn.PATH, name = "situationcode", description = "Situation Code of Inscription") }, responses = {
 									@ApiResponse(responseCode = HTTP_CODE_200, description = HTTP_MSG_200, content = @Content(schema = @Schema(implementation = Inscription.class))),
 									@ApiResponse(responseCode = HTTP_CODE_204, description = HTTP_MSG_204) }, description = "Search Inscription By Situation Code", summary = "Search Inscription By Situation Code")),
@@ -82,11 +82,11 @@ public class InscriptionRouter {
 						GET(API_ROUTE_INSCRIPTION + "/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 						inscriptionHandler::findById)
 				.andRoute(
-						GET(API_ROUTE_INSCRIPTION + "/{name}")
+						GET(API_ROUTE_INSCRIPTION + "/byname/{name}")
 								.and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 						inscriptionHandler::findByNameLike)
 				.andRoute(
-						GET(API_ROUTE_INSCRIPTION + "/{situationcode}")
+						GET(API_ROUTE_INSCRIPTION + "/bysituationcode/{situationcode}")
 								.and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 						inscriptionHandler::findBySituationcode)
 				.andRoute(POST(API_ROUTE_INSCRIPTION).and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),

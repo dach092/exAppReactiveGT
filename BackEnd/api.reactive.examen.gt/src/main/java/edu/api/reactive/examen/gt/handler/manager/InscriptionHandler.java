@@ -51,15 +51,19 @@ public class InscriptionHandler {
 
 	public Mono<ServerResponse> findByNameLike(ServerRequest request) {
 
+		String name = request.pathVariable("name");
+		
 		Flux<Inscription> inscriptions = inscriptionService
-				.findByLike(Inscription.builder().name(request.queryParam("name").get()).build());
+				.findByLike(Inscription.builder().name(name).build());
 		return ok().body(inscriptions, Inscription.class);
 	}
 
 	public Mono<ServerResponse> findBySituationcode(ServerRequest request) {
 
+		Long situacionCode = Long.valueOf(request.pathVariable("situationcode"));
+				
 		Flux<Inscription> inscriptions = inscriptionService.findBySituationcode(
-				Inscription.builder().situationcode(Long.valueOf(request.queryParam("situationcode").get())).build());
+				Inscription.builder().situationcode(situacionCode).build());
 
 		return ok().body(inscriptions, Inscription.class);
 	}

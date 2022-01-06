@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "User")
-public class User implements Serializable {
+public class UserLocal implements Serializable {
 	private static final long serialVersionUID = 8169725800250795924L;
 
 	@Id
@@ -37,7 +37,7 @@ public class User implements Serializable {
 	private String lastname;
 
 	@Field(name = "state")
-	private Boolean state;
+	private Integer state;
 
 	@Field(name = "roles")
 	private List<Role> roles;

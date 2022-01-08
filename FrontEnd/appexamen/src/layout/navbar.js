@@ -11,7 +11,6 @@ const NavbarNew = ({ infoUser }) => {
                         <Nav.Link href="/index">Inicio</Nav.Link>
                         <Nav.Link href="/inscription-list">Inscripciones</Nav.Link>
                         <Nav.Link href="/situation-list">Situacion</Nav.Link>
-                        <Nav.Link href="/student-list">Alumno</Nav.Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>

@@ -40,10 +40,10 @@ public class Student implements Serializable {
 
 	@Field(name = "email")
 	private String email;
-	
+
 	@Field(name = "state")
 	private Integer state;
 
 	@Field(name = "inscriptioncodes")
-	private List<Long> inscriptioncodes;
+	private String inscriptioncodes;
 }

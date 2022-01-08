@@ -101,7 +101,9 @@ const Listado_inscripciones = () => {
                                                     }
                                                 </td>
                                                 <td>
-                                                    <Button variant="success">Inscribir</Button>
+                                                    <Link to={`/student-mant/${inscripcion.id}`}>
+                                                        <Button variant="success">Inscribir</Button>
+                                                    </Link>
 
                                                     <Link style={{ marginLeft: '1%' }} to={`/inscription-mant/${inscripcion.id}`}>
                                                         <Button variant="secondary">Editar</Button>

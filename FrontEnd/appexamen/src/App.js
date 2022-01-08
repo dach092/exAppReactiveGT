@@ -10,7 +10,6 @@ import MenuNavBar from './layout/navbar';
 
 import Login from './main/login';
 import Index from './pages/index';
-import ListadoAlumno from './pages/list-student';
 import ListadoInscripciones from './pages/list-inscription';
 import ListadoSituacion from './pages/list-situation';
 import MantSituacion from './pages/man-situation';
@@ -36,9 +35,9 @@ const App = () => {
           <Route exact path="/index" element={<Index />} />
           <Route exact path="/inscription-list" element={<ListadoInscripciones />} />
           <Route exact path="/situation-list" element={<ListadoSituacion />} />
-          <Route exact path="/student-list" element={<ListadoAlumno />} />
           <Route exact path="/situation-mant/:id" element={<MantSituacion />} />
           <Route exact path="/inscription-mant/:id" element={<MantInscripcion />} />
+          <Route exact path="/student-mant/:id" element={<MantEstudiante />} />
         </Routes>
 
       </BrowserRouter>

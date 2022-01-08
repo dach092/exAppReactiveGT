@@ -35,7 +35,7 @@ const App = () => {
           <Route exact path="/inscription-list" element={<ListadoInscripciones />} />
           <Route exact path="/situation-list" element={<ListadoSituacion />} />
           <Route exact path="/student-list" element={<ListadoAlumno />} />
-          <Route exact path="/situation-mant" element={<MantSituacion />} />
+          <Route exact path="/situation-mant/:id" element={<MantSituacion />} />
         </Routes>
 
       </BrowserRouter>

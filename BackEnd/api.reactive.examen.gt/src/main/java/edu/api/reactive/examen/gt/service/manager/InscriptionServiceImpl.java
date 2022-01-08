@@ -40,4 +40,9 @@ public class InscriptionServiceImpl implements InscriptionService {
 	public Flux<Inscription> findBySituationcode(Inscription inscription) {
 		return inscriptionRepository.findBySituationcode(inscription.getSituationcode());
 	}
+
+	@Override
+	public Flux<Inscription> findByState(Integer state) {
+		return inscriptionRepository.findByState(state);
+	}
 }

@@ -35,4 +35,9 @@ public class StudentServiceImpl implements StudentService {
 	public Flux<Student> findByLike(Student student) {
 		return studentRepository.findByLastnameLike(student.getLastname());
 	}
+
+	@Override
+	public Flux<Student> findByState(Integer state) {
+		return studentRepository.findByState(state);
+	}
 }

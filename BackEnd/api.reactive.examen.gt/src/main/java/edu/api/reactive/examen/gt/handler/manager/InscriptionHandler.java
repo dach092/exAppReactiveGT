@@ -38,7 +38,7 @@ public class InscriptionHandler {
 
 	public Mono<ServerResponse> findAll(ServerRequest request) {
 
-		Flux<Inscription> inscriptions = inscriptionService.findAll();
+		Flux<Inscription> inscriptions = inscriptionService.findByState(0);
 		return ok().contentType(MediaType.APPLICATION_JSON).body(inscriptions, Inscription.class);
 	}
 
@@ -52,18 +52,17 @@ public class InscriptionHandler {
 	public Mono<ServerResponse> findByNameLike(ServerRequest request) {
 
 		String name = request.pathVariable("name");
-		
-		Flux<Inscription> inscriptions = inscriptionService
-				.findByLike(Inscription.builder().name(name).build());
+
+		Flux<Inscription> inscriptions = inscriptionService.findByLike(Inscription.builder().name(name).build());
 		return ok().body(inscriptions, Inscription.class);
 	}
 
 	public Mono<ServerResponse> findBySituationcode(ServerRequest request) {
 
-		Long situacionCode = Long.valueOf(request.pathVariable("situationcode"));
-				
-		Flux<Inscription> inscriptions = inscriptionService.findBySituationcode(
-				Inscription.builder().situationcode(situacionCode).build());
+		String situacionCode = request.pathVariable("situationcode");
+
+		Flux<Inscription> inscriptions = inscriptionService
+				.findBySituationcode(Inscription.builder().situationcode(situacionCode).build());
 
 		return ok().body(inscriptions, Inscription.class);
 	}

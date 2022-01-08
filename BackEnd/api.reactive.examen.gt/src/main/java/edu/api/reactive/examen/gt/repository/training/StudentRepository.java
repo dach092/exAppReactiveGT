@@ -10,4 +10,6 @@ import reactor.core.publisher.Flux;
 public interface StudentRepository extends ReactiveMongoRepository<Student, String> {
 
 	Flux<Student> findByLastnameLike(String lastname);
+	
+	Flux<Student> findByState(Integer state);
 }

@@ -34,7 +34,15 @@ public class StudentHandler {
 
 	public Mono<ServerResponse> findAll(ServerRequest request) {
 
-		Flux<Student> students = studentService.findAll();
+		Flux<Student> students = studentService.findByState(0);
+		return ok().contentType(MediaType.APPLICATION_JSON).body(students, Student.class);
+	}
+
+	public Mono<ServerResponse> findById(ServerRequest request) {
+
+		String id = request.pathVariable("id");
+
+		Mono<Student> students = studentService.findById(id);
 		return ok().contentType(MediaType.APPLICATION_JSON).body(students, Student.class);
 	}
 

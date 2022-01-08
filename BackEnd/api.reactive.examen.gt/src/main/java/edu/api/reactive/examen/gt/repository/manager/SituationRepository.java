@@ -10,4 +10,6 @@ import reactor.core.publisher.Flux;
 public interface SituationRepository extends ReactiveMongoRepository<Situation, String> {
 
 	Flux<Situation> findByNameLike(String Name);
+
+	Flux<Situation> findByState(Integer state);
 }

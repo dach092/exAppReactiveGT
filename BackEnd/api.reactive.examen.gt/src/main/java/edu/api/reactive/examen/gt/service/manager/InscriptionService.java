@@ -7,4 +7,6 @@ import reactor.core.publisher.Flux;
 public interface InscriptionService extends GenericService<Inscription> {
 
 	Flux<Inscription> findBySituationcode(Inscription inscription);
+
+	Flux<Inscription> findByState(Integer state);
 }

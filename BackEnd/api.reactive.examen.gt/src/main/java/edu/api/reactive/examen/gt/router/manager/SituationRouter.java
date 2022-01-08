@@ -37,6 +37,11 @@ public class SituationRouter {
 					@ApiResponse(responseCode = HTTP_CODE_200, description = HTTP_MSG_200, content = @Content(schema = @Schema(implementation = Situation.class))),
 					@ApiResponse(responseCode = HTTP_CODE_204, description = HTTP_MSG_204) }, description = "List of all Situations", summary = "List of all Situations")),
 
+			@RouterOperation(path = API_ROUTE_SITUATION
+					+ "/{id}", method = RequestMethod.GET, beanClass = SituationHandler.class, beanMethod = "findById", operation = @Operation(operationId = "findById", responses = {
+							@ApiResponse(responseCode = HTTP_CODE_200, description = HTTP_MSG_200, content = @Content(schema = @Schema(implementation = Situation.class))),
+							@ApiResponse(responseCode = HTTP_CODE_204, description = HTTP_MSG_204) }, description = "List of all Situations", summary = "List of all Situations")),
+
 			@RouterOperation(path = API_ROUTE_SITUATION, method = RequestMethod.POST, beanClass = SituationHandler.class, beanMethod = "add", operation = @Operation(operationId = "add", responses = {
 					@ApiResponse(responseCode = HTTP_CODE_201, description = HTTP_MSG_201, content = @Content(schema = @Schema(implementation = Situation.class))),
 					@ApiResponse(responseCode = HTTP_CODE_400, description = HTTP_MSG_400) }, requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = Situation.class))), description = "Add Situation", summary = "Add Situation")),
@@ -58,6 +63,8 @@ public class SituationRouter {
 		return RouterFunctions
 				.route(GET(API_ROUTE_SITUATION).and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 						situationHandler::findAll)
+				.andRoute(GET(API_ROUTE_SITUATION + "/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+						situationHandler::findById)
 				.andRoute(POST(API_ROUTE_SITUATION).and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 						situationHandler::add)
 				.andRoute(PUT(API_ROUTE_SITUATION + "/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),

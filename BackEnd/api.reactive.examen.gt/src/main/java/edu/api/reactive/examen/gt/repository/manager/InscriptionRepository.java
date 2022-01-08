@@ -10,7 +10,9 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface InscriptionRepository extends ReactiveMongoRepository<Inscription, String> {
 
-	Flux<Inscription> findBySituationcode(Long situationcode);
-	
+	Flux<Inscription> findBySituationcode(String situationcode);
+
 	Flux<Inscription> findByNameLike(String name);
+
+	Flux<Inscription> findByState(Integer state);
 }

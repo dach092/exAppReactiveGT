@@ -36,4 +36,9 @@ public class SituationServiceImpl implements SituationService {
 		return situationRepository.findByNameLike(situation.getName());
 	}
 
+	@Override
+	public Flux<Situation> findByState(Integer state) {
+		return situationRepository.findByState(state);
+	}
+
 }

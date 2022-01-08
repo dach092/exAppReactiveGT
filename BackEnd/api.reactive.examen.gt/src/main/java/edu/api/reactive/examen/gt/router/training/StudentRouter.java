@@ -39,6 +39,11 @@ public class StudentRouter {
 					@ApiResponse(responseCode = HTTP_CODE_200, description = HTTP_MSG_200, content = @Content(schema = @Schema(implementation = Student.class))),
 					@ApiResponse(responseCode = HTTP_CODE_204, description = HTTP_MSG_204) }, description = "List of all Students includ in areas", summary = "List of all Students")),
 
+			@RouterOperation(path = API_ROUTE_STUDENTS
+					+ "/{id}", method = RequestMethod.GET, beanClass = StudentHandler.class, beanMethod = "findById", operation = @Operation(operationId = "findById", responses = {
+							@ApiResponse(responseCode = HTTP_CODE_200, description = HTTP_MSG_200, content = @Content(schema = @Schema(implementation = Student.class))),
+							@ApiResponse(responseCode = HTTP_CODE_204, description = HTTP_MSG_204) }, description = "List of all Students includ in areas", summary = "List of all Students")),
+
 			@RouterOperation(path = API_ROUTE_STUDENTS, method = RequestMethod.POST, beanClass = StudentHandler.class, beanMethod = "add", operation = @Operation(operationId = "add", responses = {
 					@ApiResponse(responseCode = HTTP_CODE_201, description = HTTP_MSG_201, content = @Content(schema = @Schema(implementation = Student.class))),
 					@ApiResponse(responseCode = HTTP_CODE_400, description = HTTP_MSG_400) }, requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = Student.class))), description = "Add Student", summary = "Add Student")),
@@ -59,6 +64,8 @@ public class StudentRouter {
 		return RouterFunctions
 				.route(GET(API_ROUTE_STUDENTS).and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 						studentHandler::findAll)
+				.andRoute(GET(API_ROUTE_STUDENTS + "/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+						studentHandler::findById)
 				.andRoute(POST(API_ROUTE_STUDENTS).and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
 						studentHandler::add)
 				.andRoute(PUT(API_ROUTE_STUDENTS + "/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),

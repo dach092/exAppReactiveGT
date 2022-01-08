@@ -37,7 +37,13 @@ public class SituationHandler {
 
 	public Mono<ServerResponse> findAll(ServerRequest request) {
 
-		Flux<Situation> situations = situationService.findAll();
+		Flux<Situation> situations = situationService.findByState(0);
+		return ok().contentType(MediaType.APPLICATION_JSON).body(situations, Situation.class);
+	}
+
+	public Mono<ServerResponse> findById(ServerRequest request) {
+		String id = request.pathVariable("id");
+		Mono<Situation> situations = situationService.findById(id);
 		return ok().contentType(MediaType.APPLICATION_JSON).body(situations, Situation.class);
 	}
 

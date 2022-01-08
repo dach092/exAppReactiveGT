@@ -1,10 +1,15 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AddSituation } from '../services/situationservice';
+import { AddSituation, SearchSituationById, UpdateSituation } from '../services/situationservice';
 
 const Man_situation = () => {
+
+    const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const [values, setValues] = useState({
         code: '',
@@ -12,6 +17,18 @@ const Man_situation = () => {
     });
 
     const [formerrors, setFormErrors] = useState({});
+
+    const loadForUpdate = async () => {
+
+        const { isOk, data } = await SearchSituationById(id);
+
+        if (isOk && id !== 'new') {
+            setValues({
+                code: data.code,
+                name: data.name
+            });
+        }
+    };
 
     const handleChange = (event) => {
 
@@ -21,21 +38,33 @@ const Man_situation = () => {
         }));
     };
 
+    const newSituation = async () => {
+
+        const { isOk, message } = await AddSituation({ ...values, state: 0 });
+        setValues({ code: '', name: '' });
+        (isOk) ? toast.info(message) : toast.error(message)
+    }
+
+    const updateSituation = async () => {
+
+        const { isOk, message } = await UpdateSituation({ ...values, state: 0 }, id);
+        setValues({ code: '', name: '' });
+        (isOk) ? toast.info(message) : toast.error(message)
+
+        navigate("/situation-list");
+    }
+
     const handlerSubmit = async e => {
 
         e.preventDefault();
 
         if (validate(values)) {
 
-            const { isOk, message } = await AddSituation({ ...values, state: 0 });
-
-            setValues({
-                code: '',
-                name: '',
-                state: 0
-            });
-
-            return (isOk) ? toast.info(message) : toast.error(message)
+            if (id === 'new') {
+                newSituation();
+            } else {
+                updateSituation();
+            }
         }
     };
 
@@ -56,8 +85,11 @@ const Man_situation = () => {
         return (Object.keys(errors).length === 0);
     };
 
-    return (
+    useEffect(() => {
+        loadForUpdate();
+    }, []);
 
+    return (
         <>
             <Container style={{ paddingTop: '1%' }}>
                 <Row className="align-items-end">
@@ -85,6 +117,11 @@ const Man_situation = () => {
                                     <Button variant="primary" type="submit">
                                         Guardar
                                     </Button>
+                                    <Link to="/situation-list">
+                                        <Button variant="danger" type="button" style={{ marginLeft: '1%' }}>
+                                            Cancelar
+                                        </Button>
+                                    </Link>
                                 </Form>
                             </Card.Body>
                         </Card>

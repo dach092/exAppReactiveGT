@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.api.reactive.examen.gt.document.security.UserLocal;
+import edu.api.reactive.examen.gt.dto.security.UserInfoOutput;
 import edu.api.reactive.examen.gt.repository.security.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
@@ -34,5 +35,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Flux<UserLocal> findByLike(UserLocal userLocal) {
 		return userRepository.findByUsernameLike(userLocal.getUsername());
+	}
+
+	@Override
+	public Mono<UserInfoOutput> findByUsername(String username) {
+		return userRepository.findByUsername(username).map(this::toUserInfoOutput);
+	}
+
+	private UserInfoOutput toUserInfoOutput(UserLocal user) {
+		return new UserInfoOutput(user.getLastname(), user.getFirstname());
 	}
 }

@@ -26,7 +26,7 @@ public class Situation implements Serializable {
 	private String id = UUID.randomUUID().toString();
 
 	@Field(name = "code")
-	private Long code;
+	private String code;
 
 	@Field(name = "name")
 	private String name;

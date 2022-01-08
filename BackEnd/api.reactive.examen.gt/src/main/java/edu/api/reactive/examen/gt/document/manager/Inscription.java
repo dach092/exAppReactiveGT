@@ -45,7 +45,7 @@ public class Inscription implements Serializable {
 	private Instructor instructor;
 
 	@Field(name = "situationcode")
-	private Long situationcode;
+	private String situationcode;
 
 	@Field(name = "state")
 	private Integer state;

@@ -2,20 +2,20 @@
 import React from 'react';
 import { Container, Navbar, Nav, Button, Form } from 'react-bootstrap';
 
-const NavbarNew = () => {
+const NavbarNew = ({ infoUser }) => {
     return (
         <>
             <Navbar bg="light" variant="light">
                 <Container>
                     <Nav className="me-auto">
                         <Nav.Link href="/index">Inicio</Nav.Link>
-                        <Nav.Link href="/inscripcion-list">Inscripciones</Nav.Link>
-                        <Nav.Link href="/situacion-list">Situacion</Nav.Link>
-                        <Nav.Link href="/alumno-list">Alumno</Nav.Link>
+                        <Nav.Link href="/inscription-list">Inscripciones</Nav.Link>
+                        <Nav.Link href="/situation-list">Situacion</Nav.Link>
+                        <Nav.Link href="/student-list">Alumno</Nav.Link>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
-                            Inicio Sesión: <a>David Cruz Huertas</a>
+                            Inicio Sesión: <a>{infoUser}</a>
                         </Navbar.Text>
                         <Form className="d-flex">
                             <div className="me-2" />

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Card, Container, Form, Row, Col } from 'react-bootstrap';
 import { LoginUser } from '../services/loginservice';
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setInfo }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -11,9 +11,10 @@ const Login = ({ setToken }) => {
     const handlerSubmit = async e => {
         e.preventDefault();
 
-        const token = await LoginUser({ username, password });
+        const { token, info } = await LoginUser({ username, password });
 
         setToken(token);
+        setInfo(info);
     }
 
     return (

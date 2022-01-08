@@ -11,9 +11,15 @@ export const LoginUser = async (usuario) => {
     }).then(response => {
 
         if (response.status === 200) {
-            return response.headers.authorization.split(' ')[1]
+            return {
+                token: response.headers.authorization.split(' ')[1],
+                info: `${response.data.firstname} ${response.data.lastname}`
+            }
         }
 
-        return ''
+        return {
+            token: '',
+            info: ''
+        }
     });
 }

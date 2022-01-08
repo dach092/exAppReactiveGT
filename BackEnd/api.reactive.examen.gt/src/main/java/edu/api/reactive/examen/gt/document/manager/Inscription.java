@@ -27,19 +27,16 @@ public class Inscription implements Serializable {
 	private String id = UUID.randomUUID().toString();
 
 	@Field(name = "code")
-	private Long code;
+	private String code;
 
 	@Field(name = "name")
 	private String name;
-
-	@Field(name = "description")
-	private String description;
 
 	@Field(name = "startdate")
 	private Date startdate;
 
 	@Field(name = "numberrecord")
-	private Long numberrecord;
+	private Integer numberrecord;
 
 	@Field(name = "instructor")
 	private Instructor instructor;

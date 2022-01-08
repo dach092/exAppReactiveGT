@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Instructor {
 
 	@Field(name="code")
-	private Long code;
+	private String code;
 	
 	@Field(name="firstname")
 	private String firstname;

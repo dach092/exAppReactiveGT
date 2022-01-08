@@ -58,7 +58,7 @@ const Man_situation = () => {
 
         e.preventDefault();
 
-        if (validate(values)) {
+        if (validate()) {
 
             if (id === 'new') {
                 newSituation();
@@ -101,7 +101,7 @@ const Man_situation = () => {
                                 <Form onSubmit={handlerSubmit}>
                                     <Form.Group className="mb-3" controlId="cCodigoSituacion">
                                         <Form.Label>Código Situación</Form.Label>
-                                        <Form.Control type="text" name="code" maxLength={2} placeholder="Ingrese Código Situación" value={values.code} onChange={handleChange} />
+                                        <Form.Control type="text" name="code" maxLength={5} placeholder="Ingrese Código Situación" value={values.code} onChange={handleChange} />
                                         {formerrors.code && (
                                             <p className="text-warning">{formerrors.code}</p>
                                         )}

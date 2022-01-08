@@ -1,10 +1,23 @@
 
 import axios from 'axios';
-import { URL_BASE, API_SITUATION } from '../configuration/uri';
+import { URL_BASE, API_INSCRIPTION } from '../configuration/uri';
 
-export const AddSituation = async (situacion) => {
+const getHeaders = () => {
 
-    return axios.post(`${URL_BASE}${API_SITUATION}`, situacion, {
+    const tokenString = sessionStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+    };
+
+    return { headers }
+}
+
+export const AddInscription = async (inscripcion) => {
+
+    return axios.post(`${URL_BASE}${API_INSCRIPTION}`, inscripcion, {
         headers: getHeaders().headers
     }).then(response => {
 
@@ -23,9 +36,9 @@ export const AddSituation = async (situacion) => {
     });
 }
 
-export const UpdateSituation = async (situacion, id) => {
+export const UpdateInscription = async (inscripcion, id) => {
 
-    return axios.put(`${URL_BASE}${API_SITUATION}/${id}`, situacion, {
+    return axios.put(`${URL_BASE}${API_INSCRIPTION}/${id}`, inscripcion, {
         headers: getHeaders().headers
     }).then(response => {
 
@@ -44,8 +57,8 @@ export const UpdateSituation = async (situacion, id) => {
     });
 }
 
-export const DeleteSituation = async (id) => {
-    return axios.delete(`${URL_BASE}${API_SITUATION}/${id}`, {
+export const DeleteInscription = async (id) => {
+    return axios.delete(`${URL_BASE}${API_INSCRIPTION}/${id}`, {
         headers: getHeaders().headers
     }).then(response => {
 
@@ -64,9 +77,9 @@ export const DeleteSituation = async (id) => {
     });
 }
 
-export const ListSituation = async () => {
+export const ListInscription = async () => {
 
-    return axios.get(`${URL_BASE}${API_SITUATION}`, {
+    return axios.get(`${URL_BASE}${API_INSCRIPTION}`, {
         headers: getHeaders().headers
     }).then(response => {
 
@@ -87,9 +100,9 @@ export const ListSituation = async () => {
     });
 }
 
-export const SearchSituationById = async (id) => {
+export const SearchInscriptionById = async (id) => {
 
-    return axios.get(`${URL_BASE}${API_SITUATION}/${id}`, {
+    return axios.get(`${URL_BASE}${API_INSCRIPTION}/${id}`, {
         headers: getHeaders().headers
     }).then(response => {
 
@@ -108,17 +121,4 @@ export const SearchSituationById = async (id) => {
         }
 
     });
-}
-
-const getHeaders = () => {
-
-    const tokenString = sessionStorage.getItem('token');
-    const userToken = JSON.parse(tokenString);
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${userToken}`
-    };
-
-    return { headers }
 }

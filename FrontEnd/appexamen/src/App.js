@@ -14,6 +14,8 @@ import ListadoAlumno from './pages/list-student';
 import ListadoInscripciones from './pages/list-inscription';
 import ListadoSituacion from './pages/list-situation';
 import MantSituacion from './pages/man-situation';
+import MantInscripcion from './pages/man-inscription';
+import MantEstudiante from './pages/man-student';
 
 const App = () => {
 
@@ -36,12 +38,14 @@ const App = () => {
           <Route exact path="/situation-list" element={<ListadoSituacion />} />
           <Route exact path="/student-list" element={<ListadoAlumno />} />
           <Route exact path="/situation-mant/:id" element={<MantSituacion />} />
+          <Route exact path="/inscription-mant/:id" element={<MantInscripcion />} />
         </Routes>
 
       </BrowserRouter>
-      <ToastContainer hideProgressBar={false} closeOnClick autoClose={2000} hideProgressBar={true} />
+      <ToastContainer hideProgressBar={false} autoClose={2000} hideProgressBar={true} />
     </div>
   );
 }
 
 export default App;
+

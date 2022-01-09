@@ -13,13 +13,26 @@ export const LoginUser = async (usuario) => {
         if (response.status === 200) {
             return {
                 token: response.headers.authorization.split(' ')[1],
-                info: `${response.data.firstname} ${response.data.lastname}`
+                info: `${response.data.firstname} ${response.data.lastname}`,
+                isOk: true,
+                message: ''
             }
         }
 
         return {
             token: '',
-            info: ''
+            info: '',
+            isOk: false,
+            message: 'Credenciales invalidas'
+        }
+        
+    }).catch(error => {
+
+        return {
+            token: '',
+            info: '',
+            isOk: false,
+            message: 'Credenciales invalidas'
         }
     });
 }

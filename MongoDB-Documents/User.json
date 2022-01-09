@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "61d65fbb95cab84576a001dc"
+  },
+  "username": "admin",
+  "password": "$2a$10$jH0Uouey0NSWFw.ldGesI.3HXrCz3LPwttWYIsPORac3kl4wuIaHK",
+  "firstname": "David",
+  "lastname": "Cruz",
+  "state": 0,
+  "roles": [
+    {
+      "code": 1,
+      "name": "Administrator"
+    }
+  ],
+  "_class": "edu.api.reactive.examen.gt.document.security.UserLocal"
+}]

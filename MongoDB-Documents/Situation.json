@@ -1,0 +1,19 @@
+[{
+  "_id": "92b67e34-7252-4deb-b102-37840d996efd",
+  "code": "PO",
+  "name": "Programado",
+  "state": 0,
+  "_class": "edu.api.reactive.examen.gt.document.manager.Situation"
+},{
+  "_id": "63b07f50-5f16-4497-8cad-0d2d09d09ea5",
+  "code": "RE",
+  "name": "Reprogramado",
+  "state": 0,
+  "_class": "edu.api.reactive.examen.gt.document.manager.Situation"
+},{
+  "_id": "2c062f00-c8ce-47bc-b09a-7431d6097153",
+  "code": "CE",
+  "name": "Cerrado",
+  "state": 0,
+  "_class": "edu.api.reactive.examen.gt.document.manager.Situation"
+}]

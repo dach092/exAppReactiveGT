@@ -2,6 +2,10 @@
   font-size: small;
 }
 
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled), .form-control, .form-select {
+  font-size: small !important;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

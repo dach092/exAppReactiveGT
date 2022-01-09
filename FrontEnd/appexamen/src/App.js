@@ -18,9 +18,9 @@ import MantEstudiante from './pages/man-student';
 
 const App = () => {
 
-  const { token, setToken } = useToken();
+  const { token, setToken, removeToken } = useToken();
 
-  const { info, setInfo } = useInfo();
+  const { info, setInfo, removeInfo } = useInfo();
 
   if (!token) {
     return <Login setToken={setToken} setInfo={setInfo} />
@@ -29,10 +29,10 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <MenuNavBar infoUser={info} />
+        <MenuNavBar infoUser={info} removeToken={removeToken} removeInfo={removeInfo} setToken={setToken} setInfo={setInfo} />
 
         <Routes>
-          <Route exact path="/index" element={<Index />} />
+          <Route exact path="/" element={<Index />} />
           <Route exact path="/inscription-list" element={<ListadoInscripciones />} />
           <Route exact path="/situation-list" element={<ListadoSituacion />} />
           <Route exact path="/situation-mant/:id" element={<MantSituacion />} />

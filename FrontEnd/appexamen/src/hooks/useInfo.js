@@ -17,9 +17,14 @@ const UseInfo = () => {
         setInfo(userInfo);
     };
 
+    const removeInfo = () => {
+        sessionStorage.removeItem('info');
+    }
+
     return {
         setInfo: saveInfo,
-        info
+        info,
+        removeInfo
     }
 }
 

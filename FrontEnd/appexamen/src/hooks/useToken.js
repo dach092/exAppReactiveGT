@@ -18,9 +18,14 @@ const UseToken = () => {
         setToken(userToken);
     };
 
+    const removeToken = () => {
+        sessionStorage.removeItem('token');
+    }
+
     return {
         setToken: saveToken,
-        token
+        token,
+        removeToken
     }
 }
 
